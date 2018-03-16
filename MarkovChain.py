@@ -23,18 +23,10 @@ class MarkovChain:
         prob = [n/total for n in self.states[t].values()]
         return np.random.choice(list(self.states[t].keys()), 1, p=prob)[0]
 
-    #def generate(self, n_words):
-    #    last_kgram = random.choice(self.states.keys())
-    #    for i in range(0, n_words):
+    def get_random_tuple(self):
+        upper = [k for k in self.states.keys() if k[0][0].isupper()]
+        return random.choice(upper)
 
-
-    @staticmethod
-    def leftShift(t, n):
-        try:
-            n = n % len(t)
-        except ZeroDivisionError:
-            return tuple()
-        return t[n:] + t[0:n]
 
 
 
